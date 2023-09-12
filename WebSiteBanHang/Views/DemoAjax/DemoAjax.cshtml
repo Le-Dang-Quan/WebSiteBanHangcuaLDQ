@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "DemoAjax";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+@*  ------------  LOAD AJAX THEO CÁCH 1 DÙNG Ajax.ActionLink  ------------ *@
+
+@*@Ajax.ActionLink("Load Ajax MVC", "LoadAjaxActionLink", new AjaxOptions
+    {
+        HttpMethod = "GET",
+        UpdateTargetId = "KetQua",
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "divloading"
+    })*@
+
+@*  ------------  LOAD AJAX THEO CÁCH 2 DÙNG Ajax.Beginform  ------------ *@
+
+@*@using (Ajax.BeginForm("LoadAjaxBeginForm", new AjaxOptions
+    {
+        HttpMethod = "Post",
+        UpdateTargetId = "KetQua",
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "divloading"
+    }))
+    {
+        <input name="txt1" />
+        <input type="submit" value="submit" />
+    }*@
+
+@*<input type="button" id="button" value="Button JQuery Ajax" />
+
+    <div id="divloading" style="display: none;">
+        <br />
+        <br />
+        <img src="~/Content/HinhAnhSP/Spinner-1s-200px.gif" />
+    </div>
+
+    <input id="txt1" />
+    <input id="txt2" />
+
+    <div id="KetQua" style="height: 150px">
+        Đây là kết quả trả về
+        <br />
+    </div>*@
+
+@* ------------ LOAD AJAX THEO CÁCH 3 DÙNG JQuery  ------------ *@
+
+@*<script>
+        $("#button").click(function () {
+            $("#divloading").show();
+            var thamso1 = $("#txt1").val();
+            var thamso2 = $("#txt2").val();
+            $.ajax({
+                type: "GET",
+                data: { a: thamso1, b: thamso2 },
+                url: 'LoadAjaxJQuery',
+                success: function (ketqua) {
+                    $("#divloading").hide();
+                    $("#KetQua").html(ketqua);
+                }
+            })
+        })
+    </script>*@
+
+
+@*  ------------  LOAD AJAX THEO CÁCH 1 DÙNG Ajax.ActionLink  ------------ *@
+@*  ------------  *@
+
+@*@Ajax.ActionLink("Load Ajax MVC", "LoadAjaxActionLink", new AjaxOptions
+    {
+        HttpMethod = "GET",
+        UpdateTargetId = "KetQua",
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "divloading"
+    })*@

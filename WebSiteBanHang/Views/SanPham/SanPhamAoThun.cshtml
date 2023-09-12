@@ -1,0 +1,37 @@
+﻿@using WebSiteBanHang.Models;
+
+@model IEnumerable<SanPham>
+@{
+    ViewBag.Title = "SanPhamAoThun";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+<link href="~/Content/css/style_form_dangnhap.css" rel="stylesheet" />
+<link href="~/Content/css/style.css" rel="stylesheet" />
+
+@{
+    IEnumerable<SanPham> lstAo = (IEnumerable<SanPham>)ViewBag.ListAo;
+}
+
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 style="color: white; text-align: center; font-weight: bold; font-family: 'Times New Roman'; margin-top: 10px; margin-bottom: 20px; font-size: 30px">Sản Phẩm Áo Cao Cấp</h1>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li style="color: white" class="breadcrumb-item active">Áo </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="products-box">
+    @*<h1 style="color: darkslategrey; text-align: center;font-weight: bold; font-family: 'Times New Roman'; margin-top: -50px; font-size: 30px">Sản Phẩm Áo Cao Cấp</h1>*@
+    <div class="container" style="margin-top: 20px;">
+        <div class="row ">
+            @Html.Partial("SanPhamPartial", lstAo)
+        </div>
+    </div>
+</div>
+

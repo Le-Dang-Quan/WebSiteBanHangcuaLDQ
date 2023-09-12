@@ -1,0 +1,41 @@
+﻿@using WebSiteBanHang.Models;
+
+@{
+    ViewBag.Title = "ChiTietSP";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+@{
+    IEnumerable<SanPham> lstAllOne = (IEnumerable<SanPham>)ViewBag.ListAllOne;
+    IEnumerable<SanPham> lstAllSp = (IEnumerable<SanPham>)ViewBag.ListAllSP;
+}
+
+
+@* start slide*@
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 style="color: white; text-align: center; font-weight: bold; font-family: 'Times New Roman'; margin-top: 10px; margin-bottom: 20px; font-size: 30px">Chi Tiết Sản Phẩm</h1>
+                @*<ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="@Url.Action("SanPham1","SanPham")">Home</a></li>
+                        <li style="color: white" class="breadcrumb-item active"> </li>
+                    </ul>*@
+            </div>
+        </div>
+    </div>
+</div>
+@* end slide*@
+
+<!-- Start xem chi tiết  -->
+<div class="shop-detail-box-main">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("ChiTietSanPhamPartial", lstAllOne)
+        </div>
+
+    </div>
+</div>
+<!-- End xem chi tiết -->
+
+

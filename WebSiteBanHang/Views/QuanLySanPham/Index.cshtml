@@ -1,0 +1,115 @@
+﻿@using WebSiteBanHang.Models
+@model IEnumerable<SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/AdminLayout.cshtml";
+    // khởi tạo control WebGrid:  rowsPerPage -> là số sp trên trang
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 5);
+}
+
+@Html.ActionLink("Thêm sản phẩm", "TaoMoi", null, new { @class = "btn btn-success", @style = "font-size: 20px;" })
+<br />
+<br />
+
+@*<h2>Trang chủ admin</h2>*@
+
+@* thể hiện dữ liệu thông qua control webgrid *@
+@grid.GetHtml(
+        tableStyle: "gridTable",
+        headerStyle: "gridHead",
+        footerStyle: "gridFooter",
+        rowStyle: "gridRow",
+        alternatingRowStyle: "gridAltRow",
+        columns: grid.Columns(
+                grid.Column("MaSP", "Mã SP"),
+                grid.Column("TenSP", "Tên Sản Phẩm"),
+                grid.Column("MoTa", "Mô Tả", format: p => @Html.Raw(p.MoTa)),
+                grid.Column("DonGia", "Đơn Giá", format: p => @Html.Raw(p.DonGia)),
+                grid.Column("GiaCu", "Giá Cũ", format: p => @Html.Raw(p.GiaCu)),
+                grid.Column("HinhAnh", "Hình Ảnh", format: p => @Html.Raw("<img width=\"150\" height=\"150\" src=\"../Content/HinhAnhSP/" + p.HinhAnh + "\">")),
+                grid.Column(format: p => @Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaSP }, new { @class = "btn btn-danger" })),
+                grid.Column(format: p => @Html.ActionLink("Xóa", "Xoa", new { id = p.MaSP}, new { @class = "btn btn-danger" }))
+
+            )
+    )
+
+<style>
+    table {
+        border-collapse: collapse;
+        display: table;
+        border-collapse: separate;
+        box-sizing: border-box;
+       @* text-indent: initial;
+        border-spacing: 2px;
+        border-color: gray;*@
+        font-size: 18px;
+    }
+    .gridTable {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 1rem;
+        background-color: transparent;
+    }
+    tbody tr {
+        text-align: center;
+    }
+    thead tr a {
+        margin-left: 30px;
+    }
+    thead {
+        background-color: #d33b33;
+        height: 80px
+    }
+        thead tr a {
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+        }
+        @*thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit;
+    }*@
+        thead tr {
+            display: table-row;
+            vertical-align: inherit;
+            border-color: inherit;
+            
+        }
+        tbody tr {
+            border-bottom: 2px solid gray;
+        }
+    
+    .gridFooter {
+        font-weight: bold;
+        font-size: 30px;
+    }
+   @* .divTable {
+        width: 100%;
+        border: 1px solid #999999;
+    }
+
+        .divTable td {
+            border: 1px solid #999999;
+        }
+
+    .gridHead {
+        background-color: Green;
+    }
+
+        .gridHead > th > a {
+            color: #fff;
+        }
+
+    .gridFooter {
+        font-weight: bold;
+    }*@
+</style>
+
+<style>
+    .FooterAdmin {
+        display: none;
+    }
+</style>
+

@@ -1,0 +1,70 @@
+﻿@using WebSiteBanHang.Models;
+@model IEnumerable<SanPham>
+
+
+
+
+<div class="collapse navbar-collapse" id="navbar-menu">
+    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+        <li style="font-family: Arial" class="nav-item active"><a class="nav-link" href="@Url.Action("Index","Home")">Trang chủ</a></li>
+        <li style="font-family: Arial" class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+
+        <li style="font-family: Arial" class="dropdown megamenu-fw">
+            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Sản Phẩm</a>
+            <ul class="dropdown-menu megamenu-content" role="menu">
+                <li>
+                    <div class="row">
+                        @foreach (var groupItem in Model.GroupBy(n => n.LoaiSanPham))
+                        {
+                            if (groupItem.Key != null)
+                            {
+                                <div class="col-menu col-md-2">
+                                    <h6 class="title">
+                                        @groupItem.Key.TenLoai
+                                    </h6>
+                                    <div class="content">
+                                        <ul class="menu-col">
+                                            @foreach (var item in groupItem.GroupBy(n => n.NhaSanXuat))
+                                            {
+                                                if (item.Key != null)
+                                                {
+                                                    <li><a href="@Url.Action("SanPham", "SanPham", new { @MaLoaiSP = groupItem.Key.MaLoaiSP, @MaNSX=item.Key.MaNSX })">@item.Key.TenNSX</a></li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                </li>
+            </ul>
+        </li>
+
+
+        @*<li style="font-family: Arial" class="dropdown">
+                <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Sản Phẩm</a>
+                <ul class="dropdown-menu">
+                    <li id="id1"><a href="@Url.Action("SanPhamAoThun","SanPham")">Áo Nam - Nữ </a></li>
+                    <li id="id2"><a href="@Url.Action("SanPhamViDa","SanPham")">Ví Da</a></li>
+                    <li id="id3"><a href="@Url.Action("SanPhamVay","SanPham")">Váy Cao Cấp</a></li>
+                    <li id="id4"><a href="@Url.Action("SanPhamCaoGot","SanPham")">Guốc VIP</a></li>
+                    <li id="id5"><a href="@Url.Action("SanPhamQuan","SanPham")">Quần Bò</a></li>
+                    <li id="id6"><a href="@Url.Action("SanPhamDep","SanPham")">Giày Nam - Nữ</a></li>
+                </ul>
+            </li>*@
+        @*<li style="font-family: Arial" class="nav-item"><a class="nav-link" href="#">Dịch vụ</a></li>*@
+
+
+        <li style="font-family: Arial" class="nav-item"><a target="_blank" class="nav-link" href="@Url.Action("Index","Contact")">Liên Hệ</a></li>
+        <li style="font-family: Arial" class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Khác</a>
+            <ul class="dropdown-menu">
+                <li id="id1"><a href="@Url.Action("XemGioHang","GioHang")">Giỏ Hàng </a></li>
+                <li id="id2"><a href="">Thủ Tục Thanh Toán</a></li>
+                <li id="id3"><a href="">Danh Sách Yêu Thích</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>

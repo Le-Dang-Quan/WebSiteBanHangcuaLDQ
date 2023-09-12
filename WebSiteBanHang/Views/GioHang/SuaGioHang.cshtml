@@ -1,0 +1,172 @@
+﻿@using WebSiteBanHang.Models
+@model ItemGioHang
+@{
+    ViewBag.Title = "SuaGioHang";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+@{
+    List<ItemGioHang> lstGioHang = ViewBag.GioHang as List<ItemGioHang>;
+}
+
+@* slide trên mục giỏ hàng*@
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 style="color: white; text-align: center; font-weight: bold; font-family: 'Times New Roman'; margin-top: 10px; margin-bottom: 20px; font-size: 30px">Chỉnh Sửa Giỏ Hàng</h1>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("XemGioHang")">Xem giỏ hàng</a></li>
+                    <li style="color: white" class="breadcrumb-item active">Edit </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+@* end slide trên mục giỏ hàng*@
+
+
+<!-- Start Giỏ hàng  -->
+<div class="cart-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-main table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center; font-family: Arial;">Mã SP</th>
+                                <th style="text-align: center; font-family: Arial;">Hình Ảnh</th>
+                                <th style="text-align: center; font-family: Arial;">Tên Sản Phẩm</th>
+                                <th style="text-align: center; font-family: Arial;">Size</th>
+                                <th style="text-align: center; font-family: Arial;">Đơn Giá</th>
+                                <th style="text-align: center; font-family: Arial; font-family: Arial;">Số Lượng</th>
+                                <th style="text-align: center; font-family: Arial;">Tổng Tiền</th>
+                                <th style="text-align: center; font-family: Arial;">Remove</th>
+                                <th style="text-align: center; font-family: Arial;">Edit</th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in lstGioHang)
+                        {
+                            // sản phẩm có mã sản phẩm dk chỉnh gửi từ tham số bên trang xem giỏ hàng
+                            if (Model.MaSP == item.MaSP)
+                            {
+                                using (Html.BeginForm("CapNhatGioHang", "GioHang"))
+                                {
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: center; font-family: Arial; font-size: 18px;" class="thumbnail-img">
+                                                @item.MaSP @Html.Hidden("MaSP", item.MaSP)
+                                            </td>
+
+                                            <td style="text-align: center; font-family: Arial; font-size: 18px;" class="thumbnail-img">
+                                                <a href="#">
+                                                    <img width="200" height="500" class="img-fluid" src="@Url.Content("~/Content/HinhAnhSP/"+item.HinhAnh)" alt="" />
+                                                </a>
+                                            </td>
+
+                                            <td style="text-align: center; font-family: Arial; font-size: 18px;" class="name-pr">
+                                                <a href="#">@item.TenSP</a>
+                                            </td>
+
+                                            <td style="text-align: center; font-family: Arial; font-size: 18px;" class="name-pr">                                               
+                                                @Html.TextBox("Size", item.Size, new { @style = "width: 80px"})
+                                            </td>
+
+                                            <td style="text-align: center; font-family: Arial; font-size: 18px;" class="price-pr">
+                                                <p>@item.DonGia.ToString("#,##") VNĐ</p>
+                                            </td>
+
+                                            <td style="text-align: center; font-family: Arial; font-size: 18px;" class="price-pr">
+                                                @Html.TextBox("SoLuong", item.SoLuong, new { @style = "width: 80px", @class = "SoLuongThayDoi" })
+                                                <p style="color: red;" id="TB_SoLuongThayDoi"></p>
+                                            </td>
+
+                                            @* <td class="quantity-box"><input type="number" size="100" value="@item.SoLuong" min="0" step="1" class="c-input-text qty text"></td>*@
+
+                                            <td style="text-align: center; font-family: Arial; font-size: 18px;" class="total-pr">
+                                                <p>@item.ThanhTien.ToString("#,##") VNĐ</p>
+                                            </td>
+
+                                            <td class="remove-pr">
+                                                    <button class="btn btn-warning" style="color: white;">
+                                                        @Html.ActionLink("Xóa", "XoaGioHang", new { @MaSP = item.MaSP })
+                                                    </button>
+                                                @*<a href="#">
+                                                    <i class="fas fa-times"></i>
+                                                </a>*@
+                                            </td>
+
+                                            <td class="remove-pr">
+                                                <input id="btnCapNhatGH" class="btn btn-warning"  type="submit" value="Cập Nhật" />
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+                                }
+                            }
+                            else
+                            {
+                                <tbody>
+                                    <tr>
+                                        <td style="text-align: center; font-family: Arial; font-size: 18px;" class="thumbnail-img">
+                                            @item.MaSP @Html.Hidden("MaSP", item.MaSP)
+                                        </td>
+
+                                        <td style="text-align: center; font-family: Arial; font-size: 18px;" class="thumbnail-img">
+                                            <a href="#">
+                                                <img width="200" height="500" class="img-fluid" src="@Url.Content("~/Content/HinhAnhSP/"+item.HinhAnh)" alt="" />
+                                            </a>
+                                        </td>
+                                        <td style="text-align: center; font-family: Arial; font-size: 18px;" class="name-pr">
+                                            <a href="#">@item.TenSP</a>
+                                        </td>
+
+                                        <td style="text-align: center; font-family: Arial; font-size: 18px;" class="name-pr">
+                                            <a href="#">@item.Size</a>
+                                        </td>
+
+                                        <td style="text-align: center; font-family: Arial; font-size: 18px;" class="price-pr">
+                                            <p>@item.DonGia.ToString("#,##") VNĐ</p>
+                                        </td>
+                                        <td style="text-align: center; font-family: Arial; font-size: 18px;" class="price-pr">@item.SoLuong</td>
+                                        @*<td class="quantity-box"><input type="number" size="100" value="@item.SoLuong" min="0" step="1" class="c-input-text qty text"></td>*@
+
+                                        <td style="text-align: center; font-family: Arial; font-size: 18px;" class="total-pr">
+                                            <p>@item.ThanhTien.ToString("#,##") VNĐ</p>
+                                        </td>
+
+                                        <td class="remove-pr">
+                                            <a href="#">
+                                                <i class="fas fa-times"></i>
+                                            </a>
+                                        </td>
+
+                                        <td style="text-align: center; font-family: Arial; font-size: 18px;" class="remove-pr">
+                                            @Html.ActionLink("Sửa", "SuaGioHang", new { @MaSP = item.MaSP })
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Giỏ hàng -->
+
+@*  kiểm tra khi người dùng thay đổi số lượng*@
+<script>
+    $("#btnCapNhatGH").click(function () {
+        // kiểm tra số lượng ko phải là số hoặc < 0
+        var SoLuong = $(".SoLuongThayDoi").val();
+        if (isNaN(SoLuong) == true || SoLuong < 0) {
+            @*alert(SoLuong);*@
+            $("#TB_SoLuongThayDoi").text("Số lượng không hợp lệ !");
+            return false;
+        }
+    })
+</script>

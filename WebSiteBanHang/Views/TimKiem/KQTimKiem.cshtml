@@ -1,0 +1,95 @@
+﻿@using WebSiteBanHang.Models;
+@*@model IEnumerable<SanPham>*@
+
+@using PagedList.Mvc;
+@model PagedList.IPagedList<SanPham>
+@{
+    ViewBag.Title = "KQTimKiem";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 style="color: white; text-align: center; font-weight: bold; font-family: 'Times New Roman'; margin-top: 10px; margin-bottom: 20px; font-size: 30px">Sản Phẩm Đã Tìm Thấy</h1>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li style="color: white" class="breadcrumb-item active"> Tìm Kiếm </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Start Products  -->
+
+<div class="row special-list" style="top: 30px;left: 12%;">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-md-6 special-grid best-seller">
+            <div class="products-single fix">
+                <div class="box-img-hover">
+                    <div class="type-lb">
+                        <p class="sale">@item.SaleNew</p>
+
+                    </div>
+                    <img style="width: 340.9px; height: 255px;" src="@Url.Content("~/Content/HinhAnhSP/"+item.HinhAnh)" class="img-fluid" alt="Image">
+                    <div class="mask-icon">
+                        <ul>
+                            <li><a href="@Url.Action("ChiTietSP","ChiTietSanPham", new { id = item.MaSP })" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                        </ul>
+                        <a class="cart" href="@Url.Action("ThemGioHang","GioHang", new { @MaSP = item.MaSP, @strURL = Request.Url.ToString() })">Add to Cart</a>
+                    </div>
+                </div>
+                <div class="why-text">
+                    <a style="font-size: 20px;color: black; font-weight: bold;" href="@Url.Action("ChiTietSP","ChiTietSanPham", new { id = item.MaSP })">@item.TenSP</a>
+                    <h5 style="color: red;"> @item.DonGia.Value.ToString("#,##") <span style="color: blue">VNĐ</span></h5>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="pagination">
+    <span style="margin-top: 10px; color: mediumpurple; font-weight: bold;">
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount
+    </span>
+    <a>
+        @Html.PagedListPager(Model, page => Url.Action("KQTimKiem", new { page = page, @sTuKhoa = ViewBag.TuKhoa }))
+    </a>
+</div>
+
+
+<style>
+    .pagination {
+        font-size: 20px;
+        text-align: center;
+        position: relative;
+        left: 30%;
+    }
+
+        .pagination a {
+            color: blue;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+            .pagination a.active {
+                background-color: #4CAF50;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .pagination a:hover:not(.active) {
+                background-color: #ddd;
+                border-radius: 5px;
+            }
+</style>

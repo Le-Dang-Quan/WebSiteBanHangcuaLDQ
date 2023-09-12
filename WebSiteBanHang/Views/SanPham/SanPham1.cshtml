@@ -1,0 +1,262 @@
+﻿@using WebSiteBanHang.Models;
+
+@{
+    ViewBag.Title = "SanPham1";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+
+<link href="~/Content/css/style_form_dangnhap.css" rel="stylesheet" />
+
+@{
+    IEnumerable<SanPham> lstAllSp = (IEnumerable<SanPham>)ViewBag.ListAllSP;
+    IEnumerable<SanPham> lstSpBoy = (IEnumerable<SanPham>)ViewBag.ListSPBoy;
+    IEnumerable<SanPham> lstSpGirl = (IEnumerable<SanPham>)ViewBag.ListSPGirl;
+
+}
+
+@*chèm partial view vào 1 view*@
+
+@* start slide - shop*@
+<div id="slides-shop" class="cover-slides">
+    <ul class="slides-container">
+        <li class="text-left">
+            <img src="~/Content/images/banner-01.jpg" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> SHOP CLOTHES KT</strong></h1>
+                        <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
+                        <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-center">
+            <img src="~/Content/images/banner-02.jpg" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> SHOP CLOTHES KT</strong></h1>
+                        <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
+                        <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-right">
+            <img src="~/Content/images/banner-03.jpg" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> SHOP CLOTHES KT</strong></h1>
+                        <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
+                        <p><a class="btn hvr-hover" href="#">Shop New</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="slides-navigation">
+        <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+    </div>
+</div>
+@*  end slide - shop*@
+
+
+
+
+@*Start Categories*@
+<div class="categories-shop">
+    <div class="container">
+        <h1 class="sphot" style="color: blue; font-family: Arial;text-align: center; font-weight: bold ">Sản Phẩm HOT Nhất Hiện Nay</h1>
+        <br />
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/HinhAnhSP/ao-thun-coc-tay.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Áo Phông</a>
+                </div>
+                <div class="shop-cat-box">
+                    <img style="height: 350px" class="img-fluid" src="~/Content/HinhAnhSP/giay-cao-got.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Giày Cao Gót</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" src="~/Content/HinhAnhSP/vi-da-nam.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Ví Da</a>
+                </div>
+                <div class="shop-cat-box">
+                    <img style="height: 350px" class="img-fluid" src="~/Content/HinhAnhSP/bitit-hunter.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Giày Dép Quai Hậu</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="shop-cat-box">
+                    <img style="height: 350px" class="img-fluid" src="~/Content/HinhAnhSP/vay-hong.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Váy Cute</a>
+                </div>
+                <div class="shop-cat-box">
+                    <img style="height: 350px" class="img-fluid" src="~/Content/HinhAnhSP/quan-bo-rach.jpg" alt="" />
+                    <a class="btn hvr-hover" href="#">Quần Bò</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*End Categories*@
+
+@*   start list sản phẩm   *@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="title-all text-center">
+            <h1 style="font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif">Sản Phẩm Nổi Bật</h1>
+            <p>Chúng tôi đã cập nhật tất cả sản phẩm cao cấp VIP nhất thị trường.</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="special-menu text-center">
+            <div class="button-group filter-button-group">
+                @*<button class="active" data-filter="*" id="btnAll">All</button>
+                    <button data-filter=".top-featured" id="btnGirl">Top featured Girl</button>
+                    <button data-filter=".best-seller" id="btnBoy">Best seller Boy</button>*@
+                <button class="active" id="btnAll">All</button>
+                <button id="btnBoy">Best seller Boy</button>
+                <button id="btnGirl">Top featured Girl</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="products-box" id="an-hien">
+    <div class="container">
+        <div class="row ">
+            @Html.Partial("SanPhamPartial", lstAllSp)
+        </div>
+    </div>
+</div>
+
+
+
+<div class="products-box " id="an-hien-1">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("SanPhamPartial", lstSpBoy)
+        </div>
+    </div>
+</div>
+
+<div class="products-box " id="an-hien-2">
+    <div class="container">
+        <div class="row ">
+            @Html.Partial("SanPhamPartial", lstSpGirl)
+        </div>
+    </div>
+</div>
+
+
+@*  end list sản phẩm   *@
+
+<script type="text/javascript">
+    // hiển thị form
+    $("#btnAll").click(function () {
+        $("#an-hien").show();
+        $("#an-hien-1").hide();
+        $("#an-hien-2").hide();
+    });
+
+    $("#btnBoy").click(function () {
+        $("#an-hien-1").show();
+        $("#an-hien-2").hide();
+        $("#an-hien").hide();
+    });
+
+    $("#btnGirl").click(function () {
+        $("#an-hien-2").show();
+        $("#an-hien-1").hide();
+        $("#an-hien").hide();
+    });
+
+
+</script>
+
+
+
+
+
+@*  Start Blog  *@
+<div class="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Shop Clothes KT</h1>
+                    <p style="color: blue">Xin Chào Các VIP</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 col-xl-4">
+                <div class="blog-box">
+                    <div class="blog-img">
+                        <img class="img-fluid" src="~/Content/HinhAnhSP/blog-img.jpg" alt="" />
+                    </div>
+                    <div class="blog-content">
+                        <div class="title-blog">
+                            <h3 style="text-align: center;">Các sản phẩm quần áo</h3>
+                            <p style="align-items: center;">Mặc váy body người nhìn thì thích mà người mặc chưa chắc đã thoải mái nếu chất liệu không được tốt. Tất cả mẫu váy body sang chảnh mà em mới nhập đều là từ ren xịn với lớp lót mỏng nhẹ được may cẩn thận đến từng đường kim mũi chỉ, đảm bảo sẽ làm hài lòng cả những chị em khó tính nhất!</p>
+                        </div>
+                        <ul class="option-blog">
+                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Likes"><i class="far fa-heart"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Views"><i class="fas fa-eye"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Comments"><i class="far fa-comments"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-4">
+                <div class="blog-box">
+                    <div class="blog-img">
+                        <img class="img-fluid" src="~/Content/HinhAnhSP/blog-img-01.jpg" alt="" />
+                    </div>
+                    <div class="blog-content">
+                        <div class="title-blog">
+                            <h3 style="text-align: center;">Phụ kiện HOT</h3>
+                            <p>Muốn mua điện thoại mới mà ngại giá cao? Vậy thì bạn cứ tìm nơi nguồn hàng đảm bảo mà lại được chiết khấu nhiều như Clothes KT nhé. Thích dòng nào hay mẫu nào dù là mới nhất chúng mình đều có, giá chắc chắn là rẻ hơn thị trường từ 1 đến 3% đấy ạ! <br />&nbsp; <br /> </p>
+                        </div>
+                        <ul class="option-blog">
+                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Likes"><i class="far fa-heart"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Views"><i class="fas fa-eye"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Comments"><i class="far fa-comments"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 col-xl-4">
+                <div class="blog-box">
+                    <div class="blog-img">
+                        <img style="height: 296.15px; width: 350px" class="img-fluid" src="~/Content/HinhAnhSP/anh-thu-ba.jpg" alt="" />
+                    </div>
+                    <div class="blog-content">
+                        <div class="title-blog">
+                            <h3 style="text-align: center;">Giày dép cao cấp</h3>
+                            <p>Muốn mua giày dép mới cao cấp mà ngại giá cao? Vậy thì bạn cứ tìm nơi nguồn hàng đảm bảo mà lại được chiết khấu nhiều như Clothes KT nhé. Thích mẫu nào dù là mới nhất chúng mình đều có, giá chắc chắn là rẻ hơn thị trường từ 1 đến 3% đấy ạ! <br />&nbsp; <br /></p>
+                        </div>
+                        <ul class="option-blog">
+                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Likes"><i class="far fa-heart"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Views"><i class="fas fa-eye"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Comments"><i class="far fa-comments"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*  End Blog  *@
+
+

@@ -1,0 +1,63 @@
+﻿body {
+}
+
+.dky-oday {
+    color: #393f81;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+    .dky-oday:hover {
+        color: red;
+        transition: 0.3s;
+    }
+
+.quenmk-oday {
+    color: #393f81;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+    .quenmk-oday:hover {
+        color: red;
+        transition: 0.3s;
+    }
+#Content {
+    height: 1000px;
+}
+#login-toan-trang {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    background-color: rgba(0,0,0,.5);
+    display: none;
+}
+.icon-close {
+  /*  background-image: url("/Content/images/closee.png");*/
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 15px;
+    right: 50px;
+    cursor: pointer;
+}
+
+#an-hien-1, #an-hien-2, #an-hien-3, #an-hien-4, #an-hien-5, #an-hien-6 {
+    display: none;
+}
+
+#stylee {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+    #stylee:hover {
+        color: green;
+    }
+#the-form {
+    height: 450px;
+}
+

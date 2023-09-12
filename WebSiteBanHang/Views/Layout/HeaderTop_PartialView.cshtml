@@ -1,0 +1,196 @@
+﻿@using WebSiteBanHang.Models;
+
+
+
+<div class="main-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="text-slid-box">
+                    <div id="offer-box" class="carouselTicker">
+                        <ul class="offer-box">
+                            <li>
+                                <i class="fab fa-opencart"></i> Off 10%! Shop Now Man
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> 50% - 80% off on Fashion
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT20
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> Off 10%! Shop Now Man
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> 50% - 80% off on Fashion
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT20
+                            </li>
+                            <li>
+                                <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="custom-select-box">
+                    <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
+                        <option>Hà Nội</option>
+                        <option>Hồ Chí Minh</option>
+                        <option>Hải Phòng</option>
+                    </select>
+                </div>
+                <div class="right-phone-box">
+                    <p>Call US : <a href="#"> 0972138493</a></p>
+                </div>
+                <div class="our-link">
+                    <ul>
+                        @if (Session["TaiKhoan"] != null && Session["TaiKhoan"] != "")
+                        {
+                            ThanhVien tv = (ThanhVien)Session["TaiKhoan"];
+                            <li><span style="font-size: 20px;color: white; font-weight:bold;"> Xin Chào: <span style="color: red;"> @tv.HoTen</span></span></li>
+                            @Html.ActionLink("Đăng Xuất | ","DangXuat","Home", new { id = "stylee" })
+                        }
+                        else
+                        {
+                            <li><a id="btnDangNhap" style="font-family: Arial" href="#">Đăng Nhập </a></li>
+                        }
+                        @*<li><a style="font-family: Arial" href="#">Địa Chỉ</a></li>
+                        <li><a style="font-family: Arial" href="#">Liên Hệ Chúng Tôi</a></li>*@
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="display: none;" id="login-toan-trang">
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col col-xl-10">
+                    <div class="card" style="border-radius: 1rem; height: 570px;">
+                        <div class="row g-0">
+                            <div class="col-md-6 col-lg-5 d-none d-md-block">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                                     alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;height: 570px" />
+                            </div>
+                            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                                <div class="card-body p-4 p-lg-5 text-black">
+
+                                    @*<form style="height: 450px; ">*@
+                                    @* --------  cách 1: sử dụng Html.BeginForm -----------  *@
+                                    @*@using (Html.BeginForm("DangNhap", "Home"))
+            {
+                <div class="icon-close">
+                    <a target="_self" href="#"><img src="~/Content/images/closee.png" width="20" height="20" /></a>
+                                        <!--<img src="~/Content/images/closee.png" width="20" height="20" />
+        </div>
+        <div class="d-flex align-items-center mb-3 pb-1">
+            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+            <span class="h1 fw-bold mb-0">Login</span>
+        </div>
+
+        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px; font-size: 20px">Đăng nhập tài khoản của bạn</h5>
+
+        <div class="form-outline mb-4">
+            <input name="txtDangNhap" required type="text" id="form2Example17" class="form-control form-control-lg TaiKhoan" />
+            <label class="form-label" for="form2Example17">Tài khoản</label>
+        </div>
+
+        <div class="form-outline mb-4">
+            <input name="txtMatKhau" required type="password" id="form2Example27" class="form-control form-control-lg MatKhau" />
+            <label class="form-label" for="form2Example27">Mật khẩu</label>
+        </div>
+
+        <div class="pt-1 mb-4">
+            <button class="btn btn-dark btn-lg btn-block" type="submit">Đăng Nhập</button>
+        </div>
+
+        <a class=" quenmk-oday" href="#!">Quên mật khẩu?</a>
+        <p class="mb-5 pb-lg-2" style="color: #393f81; font-size: 20px">
+            Không có tài khoản? <a class="dky-oday" href="@Url.Action("DangKy","Home")">Đăng ký ở đây</a>
+        </p>-->
+                                        } *@
+                                    @*</form>*@
+
+
+
+
+                                    @*   cách 2: sử dụng Ajax.BeginForm   *@
+                                    @using (Ajax.BeginForm("DangNhap", "Home", new AjaxOptions
+                                    {
+                                        InsertionMode = InsertionMode.Replace,
+                                        UpdateTargetId = "ThongBao_SaiTkMk"
+                                    }))
+                                    {
+                                        <div class="icon-close">
+                                            @*<a target="_self" href="#"><img src="~/Content/images/closee.png" width="20" height="20" /></a>*@
+                                            <img src="~/Content/images/closee.png" width="20" height="20" />
+                                        </div>
+                                        <div class="d-flex align-items-center mb-3 pb-1">
+                                            <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                                            <span class="h1 fw-bold mb-0">Login</span>
+                                        </div>
+
+                                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px; font-size: 20px">Đăng nhập tài khoản của bạn</h5>
+
+                                        <div class="form-outline mb-4">
+                                            <input name="txtDangNhap" required type="text" id="form2Example17" class="form-control form-control-lg TaiKhoan" />
+                                            <label class="form-label" for="form2Example17">Tài khoản</label>
+                                        </div>
+
+                                        <div class="form-outline mb-4">
+                                            <input name="txtMatKhau" required type="password" id="form2Example27" class="form-control form-control-lg MatKhau" />
+                                            <label class="form-label" for="form2Example27">Mật khẩu</label>
+                                        </div>
+
+                                        // thong báo sai tài khoản - mật khẩu
+                                        <span id="ThongBao_SaiTkMk" style="font-size: 18px;font-weight: bold; color: red; top: -15px; position: relative;"></span>
+
+                                        <div class="pt-1 mb-4">
+                                            <button class="btn btn-dark btn-lg btn-block" type="submit">Đăng Nhập</button>
+                                        </div>
+
+                                        <a class=" quenmk-oday" href="#!">Quên mật khẩu?</a>
+                                        <p class="mb-5 pb-lg-2" style="color: #393f81; font-size: 20px">
+                                            Không có tài khoản? <a class="dky-oday" href="@Url.Action("DangKy","Home")">Đăng ký ở đây</a>
+                                        </p>
+                                    }
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@*sử dụng jquery hiển thị form đăng nhập*@
+
+<script type="text/javascript">
+    // hiển thị form đăng nhập
+    $("#btnDangNhap").click(function () {
+        $("#login-toan-trang").show();
+    });
+
+    // close form đăng nhập
+    $(".icon-close").click(function () {
+        $("#login-toan-trang").hide();
+    });
+
+    // ví dụ lấy giá trị từ textbox
+    $("#btnDangNhap").click(function () {
+        var TaiKhoan = $(".TaiKhoan").val();
+        var MatKhau = $(".MatKhau").val();
+    })
+</script>

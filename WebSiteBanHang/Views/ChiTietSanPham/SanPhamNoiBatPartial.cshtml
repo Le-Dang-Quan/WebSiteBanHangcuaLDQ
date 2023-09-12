@@ -1,0 +1,42 @@
+﻿@using WebSiteBanHang.Models;
+@model IEnumerable<SanPham>
+
+<!-- start sp nổi bật phần chi tiết sp  -->
+
+@foreach (var item in Model)
+{
+    @*sản phẩm nổi bật trong phần xem chi tiết*@
+@*    <div class="row my-5">
+        <div class="col-lg-12">*@
+            <div class="title-all text-center">
+                <h1 style="font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif">Sản Phẩm Nổi Bật</h1>
+                <p>Chúng tôi đã cập nhật tất cả sản phẩm cao cấp VIP nhất thị trường.</p>
+            </div>
+            <div class="featured-products-box owl-carousel owl-theme">
+                <div class="item">
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <img src="@Url.Content("~/Content/HinhAnhSP/"+item.HinhAnh)" class="img-fluid" alt="Image">
+                            <div class="mask-icon">
+                                <ul>
+                                    <li><a href="@Url.Action("ChiTietSP","ChiTietSanPham", new { id = item.MaSP })" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                </ul>
+                                <a class="cart" href="@Url.Action("ThemGioHang","GioHang", new { @MaSP = item.MaSP, @strURL = Request.Url.ToString() })">Add to Cart</a>
+                            </div>
+                        </div>
+                        <div class="why-text">
+                            <h4>@item.TenSP</h4>
+                            <h5 style="color: blue;"> @item.DonGia.Value.ToString("#,##") <span style="color: black">VNĐ</span></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+@*        </div>
+    </div>*@
+    @*  hết phần sản phẩm nổi bật trong phần xem chi tiết*@
+}
+
+
+<!-- End sp nổi bật phần chi tiết sp  -->

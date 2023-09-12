@@ -1,0 +1,19 @@
+﻿@using WebSiteBanHang.Models;
+@model IEnumerable<SanPham>
+
+
+<div class="top-search">
+    @*   tạo form submit về action tìm kiếm   *@
+    @using (Html.BeginForm("KQTimKiem", "TimKiem"))
+    {
+        <div class="container">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input name="sTuKhoa" id="search-input" type="text" class="form-control" placeholder="Tìm kiếm trên Clothes KT ">
+                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+            </div>
+        </div>
+    }
+</div>
+
+
